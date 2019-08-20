@@ -3,9 +3,9 @@
     <v-toolbar-title v-text="'JoBlog'" @click="goPage('index')"></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn flat to="/">My Story</v-btn>
-      <v-btn flat to="/">Dev Story</v-btn>
-      <v-btn flat to="/contact">Contact</v-btn>
+      <v-btn text to="/">My Story</v-btn>
+      <v-btn text to="/devBoardList">Dev Story</v-btn>
+      <v-btn texgt to="/contact">Contact</v-btn>
       <v-btn icon>
         <v-icon>account_circle</v-icon>
       </v-btn>
