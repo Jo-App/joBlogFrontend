@@ -32,7 +32,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    source: String
+  },
+  created() {
+    this.$vuetify.theme.dark = true;
+  }
+};
 </script>
 
 <style>
