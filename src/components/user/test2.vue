@@ -3,10 +3,10 @@
     <v-flex xs12 sm12>
       <v-card>
         <v-img
-          src="../../assets/image/back_contact.png"
+          src="../../../assets/image/back_contact.png"
           height="1000px"
         >
-        <img src="../assets/image/back_contact.png">
+        <img src="../../assets/image/back_contact.png">
           <v-layout
             column
             fill-height

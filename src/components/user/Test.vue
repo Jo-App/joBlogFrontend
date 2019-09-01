@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Constant from "../constant.js";
+import Constant from "../../constant.js";
 import { mapState } from "vuex";
 import Paginate from "vuejs-paginate";
 import _ from "lodash";
