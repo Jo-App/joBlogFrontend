@@ -20,5 +20,6 @@ module.exports = {
   //   host: 'localhost', 
   //   port: 8080
   // }, 
-  transpileDependencies:[/node_modules[/\\\\]vuetify[/\\\\]/]
+  //transpileDependencies:[/node_modules[/\\\\]vuetify[/\\\\]/],
+  transpileDependencies:['vuetify']
 }
