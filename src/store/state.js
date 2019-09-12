@@ -12,4 +12,10 @@ export default {
     },
     
     boardList : '',
+
+    //유저
+    user : {
+        list : [],
+        userAddModal : false,
+    }
 }

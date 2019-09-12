@@ -2,17 +2,20 @@
   <div>
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <template v-for="item in items">
-          <v-list-item @click="movePage(item.target)">
-            <v-list-item-action>
-              <v-icon>{{item.icon}}</v-icon>
-            </v-list-item-action>
+        <v-list-item-group v-model="model" mandatory color="indigo">
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+            @click="movePage(item.target)"
+          >
+            <v-list-item-icon>
+              <v-icon v-text="item.icon"></v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>{{item.text}}</v-list-item-title>
+              <v-list-item-title v-text="item.text"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </template>
-
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -28,10 +31,12 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: 'dashboard', text: 'Dashboard', target : 'deviceList' },
-      { icon: 'settings', text: 'Settings', target : 'deviceList' },
+      // { icon: 'dashboard', text: 'Dashboard', target : 'deviceList' },
+      // { icon: 'settings', text: 'Settings', target : 'deviceList' },
+      { icon: 'people', text: 'User', target: 'userList' },
       { icon: 'assignment', text: 'Board', target : 'adminBoard' },
-    ]
+    ],
+    model : 1,
   }),
   methods:{
     movePage(target){

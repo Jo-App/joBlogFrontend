@@ -15,6 +15,15 @@ export default {
             store.commit(Constant.LIST_CODE, { contactlist: response });
         })
     },
+
+    //유저 목록
+    [Constant.USER_LIST] : (store, payload) => {
+        contactAPI.userList(1,10)
+        .then((response)=> {
+            console.log(response)
+            store.commit(Constant.USER_LIST, {list : response.data } );
+        })
+    },
     
     [Constant.DEV_BOARD_LIST] : (store, payload) => {
         console.log("test");
