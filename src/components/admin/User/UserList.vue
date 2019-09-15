@@ -37,7 +37,7 @@ import Constant from "../../../constant.js";
 import { mapState } from "vuex";
 import _ from "lodash";
 
-import UserAddModal from "../User/UserAddModal.vue";
+import UserAddModal from "./UserAddModal.vue";
 
 export default {
   components:{

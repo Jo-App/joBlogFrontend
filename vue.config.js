@@ -1,6 +1,7 @@
 module.exports = {
   runtimeCompiler: true,
   devServer: {
+      port: 8000,
       historyApiFallback: true,
       noInfo: true,
       overlay: true,
