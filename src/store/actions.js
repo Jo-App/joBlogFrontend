@@ -29,7 +29,16 @@ export default {
       })
   },
 
-
+  //유저 등록
+  [Constant.USER_SAVE]: (store, payload) => {
+    console.log(payload.name)
+    console.log(payload.email)
+    console.log(payload.password)
+    var name = payload.name;
+    var email = payload.email;
+    var password = payload.password;
+    //contactAPI.userSave(name, email, password)
+  },
 
   [Constant.DEV_BOARD_LIST]: (store, payload) => {
     console.log("test");
