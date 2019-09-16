@@ -1,8 +1,5 @@
 <template>
-    <div>
-      
-      {{boardList.data}}
-    </div>
+  <div>{{boardList.data}}</div>
 </template>
 
 <script>
@@ -12,16 +9,12 @@ import Paginate from "vuejs-paginate";
 import _ from "lodash";
 
 export default {
-  computed: _.extend(
-    mapState(["boardList"])
-  ),
-  created(){
+  computed: _.extend(mapState(["boardList"])),
+  created() {
     this.$store.dispatch(Constant.DEV_BOARD_LIST);
-  },
-  
+  }
 };
 </script>
 
 <style>
-
 </style>

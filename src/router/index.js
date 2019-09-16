@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
@@ -14,4 +13,3 @@ export const router = new VueRouter({
   routes
   // get rid of #
 });
-  

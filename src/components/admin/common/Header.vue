@@ -3,11 +3,7 @@
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
         <v-list-item-group v-model="model" mandatory color="indigo">
-          <v-list-item
-            v-for="(item, i) in items"
-            :key="i"
-            @click="movePage(item.target)"
-          >
+          <v-list-item v-for="(item, i) in items" :key="i" @click="movePage(item.target)">
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
@@ -33,13 +29,13 @@ export default {
     items: [
       // { icon: 'dashboard', text: 'Dashboard', target : 'deviceList' },
       // { icon: 'settings', text: 'Settings', target : 'deviceList' },
-      { icon: 'people', text: 'User', target: 'userList' },
-      { icon: 'assignment', text: 'Board', target : 'adminBoard' },
+      { icon: "people", text: "User", target: "userList" },
+      { icon: "assignment", text: "Board", target: "adminBoard" }
     ],
-    model : 1,
+    model: 1
   }),
-  methods:{
-    movePage(target){
+  methods: {
+    movePage(target) {
       this.$router.push({ name: target, query: { page: 1 } });
     }
   }

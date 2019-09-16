@@ -2,7 +2,6 @@
   <v-form>
     <v-container fluid>
       <v-row>
-
         <v-col cols="12" sm="6">
           <v-text-field
             v-model="password"
@@ -58,27 +57,26 @@
             @click:append="show4 = !show4"
           ></v-text-field>
         </v-col>
-
       </v-row>
     </v-container>
   </v-form>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        show1: false,
-        show2: true,
-        show3: false,
-        show4: false,
-        password: 'Password',
-        rules: {
-          required: value => !!value || 'Required.',
-          min: v => v.length >= 8 || 'Min 8 characters',
-          emailMatch: () => ('The email and password you entered don\'t match'),
-        },
+export default {
+  data() {
+    return {
+      show1: false,
+      show2: true,
+      show3: false,
+      show4: false,
+      password: "Password",
+      rules: {
+        required: value => !!value || "Required.",
+        min: v => v.length >= 8 || "Min 8 characters",
+        emailMatch: () => "The email and password you entered don't match"
       }
-    },
+    };
   }
+};
 </script>

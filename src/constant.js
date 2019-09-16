@@ -1,10 +1,10 @@
 export default {
-    LIST_CODE : "listCode",
-    DEV_BOARD_LIST : "devBoardList",
+  LIST_CODE: "listCode",
+  DEV_BOARD_LIST: "devBoardList",
 
-    
-    USER_LIST : "userList", //유저 목록
 
-    MODAL_OPEN : "modalOpen", //모달 열기
-    MODAL_CLOSE : "modalClose", //모달 닫기
+  USER_LIST: "userList", //유저 목록
+
+  MODAL_OPEN: "modalOpen", //모달 열기
+  MODAL_CLOSE: "modalClose", //모달 닫기
 }

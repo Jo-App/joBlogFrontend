@@ -6,23 +6,22 @@
     <v-card-text>
       <v-container>
         <v-row>
-
           <v-col cols="12" sm="6" md="4">
             <v-text-field
               ref="name"
               v-model="name"
               :rules="[rules.required]"
               label="Full Name*"
-              placeholder=""
+              placeholder
               required
             ></v-text-field>
           </v-col>
-          
+
           <v-col cols="12">
-            <v-text-field 
+            <v-text-field
               ref="email"
-              v-model="email" 
-              label="Email*" 
+              v-model="email"
+              label="Email*"
               :rules="[rules.required, rules.email]"
               required
             ></v-text-field>
@@ -59,56 +58,60 @@ import { mapState } from "vuex";
 import _ from "lodash";
 
 export default {
-  data(){
-    return{
+  data() {
+    return {
       formHasErrors: false,
       name: "",
       email: "",
       password: "",
       show: false,
       rules: {
-        required: value => !!value || 'This field is required.',
-        min: v => v.length >= 8 || 'Min 8 characters',
-        emailMatch: () => ('The email and password you entered don\'t match'),
+        required: value => !!value || "This field is required.",
+        min: v => v.length >= 8 || "Min 8 characters",
+        emailMatch: () => "The email and password you entered don't match",
         email: value => {
-          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          return pattern.test(value) || 'Invalid e-mail.'
-        },
-      },
-    }
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return pattern.test(value) || "Invalid e-mail.";
+        }
+      }
+    };
   },
   computed: {
-    form () {
+    form() {
       return {
         name: this.name,
         email: this.email,
-        password: this.password,
-      }
-    },
+        password: this.password
+      };
+    }
   },
   methods: {
-    close(){
-      this.$store.commit(Constant.MODAL_CLOSE, {target: "user", name: "userAddModal"});
+    close() {
+      this.$store.commit(Constant.MODAL_CLOSE, {
+        target: "user",
+        name: "userAddModal"
+      });
     },
-    validationCheck(){
+    validationCheck() {
       this.formHasErrors = false;
       Object.keys(this.form).forEach(f => {
-        if(this.form[f] == "") {
+        if (this.form[f] == "") {
           this.formHasErrors = true;
+          this.$refs[f].validate(true);
         }
-        this.$refs[f].validate(true);
-      })
-      //save 버튼 누를때 벨리데이션 체크 한번더해야됨
-
-      if(!this.formHasErrors){
+      });
+      //이메일 중복여부를 채크해주는 벨리데이션 추가해야됨
+      if (!this.formHasErrors) {
         this.save();
       }
     },
-    save(){
-      console.log("save")
-      //this.$store.dispatch(Constant.USER_SAVE, {})
-    },
-  },
-
-}
+    save() {
+      this.$store.dispatch(Constant.USER_SAVE, {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      });
+    }
+  }
+};
 </script>
