@@ -22,6 +22,10 @@
             </v-btn>
           </v-toolbar>
         </template>
+        <template v-slot:item.action="{ item }">
+          <v-icon small class="mr-2" @click="editItem(item)">edit</v-icon>
+          <v-icon small @click="deleteItem(item)">delete</v-icon>
+        </template>
       </v-data-table>
     </v-container>
 
@@ -49,7 +53,8 @@ export default {
         { text: "No", value: "No" },
         { text: "Email", value: "Email" },
         { text: "Name", value: "Name" },
-        { text: "CreatedDate", value: "CreatedDate" }
+        { text: "CreatedDate", value: "CreatedDate" },
+        { text: "Actions", value: "action", sortable: false }
       ]
     };
   },
@@ -66,6 +71,17 @@ export default {
         target: "user",
         name: "userAddModal"
       });
+    },
+    editItem(item) {
+      console.log(item);
+      this.$store.commit(Constant.MODAL_OPEN, {
+        target: "user",
+        name: "userEidtModal"
+      })
+    },
+    deleteItem(item) {
+      var no = item.No;
+      this.$store.dispatch(Constant.USER_DELETE, { no });
     }
   }
 };

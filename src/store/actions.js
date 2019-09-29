@@ -22,7 +22,7 @@ export default {
   [Constant.USER_LIST]: (store, payload) => {
     contactAPI.userList(1, 10)
       .then((response) => {
-        console.log(response)
+        //console.log(response)
         store.commit(Constant.USER_LIST, {
           list: response.data
         });
@@ -31,13 +31,23 @@ export default {
 
   //유저 등록
   [Constant.USER_SAVE]: (store, payload) => {
-    console.log(payload.name)
-    console.log(payload.email)
-    console.log(payload.password)
     var name = payload.name;
     var email = payload.email;
     var password = payload.password;
-    //contactAPI.userSave(name, email, password)
+
+    contactAPI.userSave(name, email, password)
+      .then((response) => {
+        console.log(response)
+      })
+  },
+
+  //유저 삭제
+  [Constant.USER_DELETE]: (store, payload) => {
+    var no = payload.no;
+    contactAPI.userDelete(no)
+      .then((response) => {
+        console.log(response)
+      })
   },
 
   [Constant.DEV_BOARD_LIST]: (store, payload) => {

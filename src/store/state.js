@@ -20,5 +20,6 @@ export default {
   user: {
     list: [],
     userAddModal: false,
+    userEidtModal: false,
   }
 }
