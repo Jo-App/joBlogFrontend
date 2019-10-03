@@ -22,9 +22,8 @@ export default {
   [Constant.USER_LIST]: (store, payload) => {
     contactAPI.userList(1, 10)
       .then((response) => {
-        //console.log(response)
         store.commit(Constant.USER_LIST, {
-          list: response.data
+          list: response
         });
       })
   },

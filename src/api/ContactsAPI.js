@@ -1,6 +1,7 @@
 import axios from 'axios';
 import CONF from '../Config.js';
 import Constant from '../constant.js';
+import state from '../store/state.js';
 
 export default {
 
@@ -24,13 +25,30 @@ export default {
   },
 
   //유저 목록
-  [Constant.USER_LIST](pageno, pagesize) {
-    return axios.get(CONF.USER_LIST, {
+  async [Constant.USER_LIST](pageno, pagesize) {
+    const res = await axios.get(CONF.USER_LIST, {
       params: {
         pageno: pageno,
         pagesize: pagesize
       }
     })
+    var result = res.data; //db에서 조회된 값 저장
+    var content = state.user.content; //아이템이 담길 변수
+    var contents = state.user.contents; //목록을 쌓을 변수
+    var keys = Object.keys(content);
+    result.map(data => {
+      for (var i in keys) {
+        content[keys[i]] = data[keys[i]];
+      }
+      contents.push({
+        ...content
+      })
+    })
+    //state 초기화
+    for (var i in keys) {
+      content[keys[i]] = '';
+    }
+    return contents;
   },
 
   //유저 등록

@@ -18,6 +18,14 @@ export default {
 
   //유저
   user: {
+    content: {
+      No: '',
+      Email: '',
+      Password: '',
+      Name: '',
+      CreatedDate: '',
+    },
+    contents : [],
     list: [],
     userAddModal: false,
     userEidtModal: false,
