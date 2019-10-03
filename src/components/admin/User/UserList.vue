@@ -3,7 +3,6 @@
     <v-container style="max-width:100%;">
       <!-- 유저
       {{userList.list}}-->
-
       <v-data-table
         v-model="selected"
         :headers="headers"
@@ -29,9 +28,10 @@
       </v-data-table>
     </v-container>
 
-    <v-dialog v-model="this.$store.state.user.userAddModal" persistent max-width="600px">
-      <UserAddModal></UserAddModal>
+    <v-dialog v-model="this.$store.state.user.modalView" persistent max-width="600px">
+      <UserModal></UserModal>
     </v-dialog>
+    
   </v-content>
 </template>
 
@@ -41,10 +41,12 @@ import { mapState } from "vuex";
 import _ from "lodash";
 
 import UserAddModal from "./UserAddModal.vue";
+import UserModal from "./UserModal.vue";
 
 export default {
   components: {
-    UserAddModal
+    UserAddModal,
+    UserModal
   },
   data() {
     return {
@@ -69,14 +71,14 @@ export default {
     userAddModal() {
       this.$store.commit(Constant.MODAL_OPEN, {
         target: "user",
-        name: "userAddModal"
+        mode: "add"
       });
     },
     editItem(item) {
       console.log(item);
       this.$store.commit(Constant.MODAL_OPEN, {
         target: "user",
-        name: "userEidtModal"
+        mode: "edit"
       })
     },
     deleteItem(item) {

@@ -16,11 +16,13 @@ export default {
 
   //모달 열기
   [Constant.MODAL_OPEN]: (state, payload) => {
-    state[payload.target][payload.name] = true;
+    state[payload.target].modalView = true;
+    state[payload.target].mode = payload.mode;
   },
 
   //모달 닫기
   [Constant.MODAL_CLOSE]: (state, payload) => {
-    state[payload.target][payload.name] = false;
+    state[payload.target].modalView = false;
+    state[payload.target].mode = '';
   },
 }

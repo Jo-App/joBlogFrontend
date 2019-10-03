@@ -27,7 +27,7 @@ export default {
     },
     contents : [],
     list: [],
-    userAddModal: false,
-    userEidtModal: false,
+    modalView: false,
+    mode:'',
   }
 }
