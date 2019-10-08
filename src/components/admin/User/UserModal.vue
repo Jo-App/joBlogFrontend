@@ -8,6 +8,7 @@
         <span class="headline">유저 수정</span>
       </template>
     </v-card-title>
+    {{user.content}}
     <v-card-text>
       <v-container>
         <v-row>
@@ -82,7 +83,17 @@ export default {
 
     };
   },
-  computed: {
+  // computed: {
+  //   form() {
+  //     return {
+  //       name: this.name,
+  //       email: this.email,
+  //       password: this.password
+  //     };
+  //   },
+  // },
+  computed:
+    _.extend(mapState(["user"])),
     form() {
       return {
         name: this.name,
@@ -90,13 +101,18 @@ export default {
         password: this.password
       };
     },
-
-  },
   methods: {
     close() {
       this.$store.commit(Constant.MODAL_CLOSE, {
         target: "user"
       });
+      this.$store.state.user.content = {
+        No: '',
+        Email: '',
+        Password: '',
+        Name: '',
+        CreatedDate: '',
+      }
     },
     validationCheck() {
       this.formHasErrors = false;
@@ -121,6 +137,7 @@ export default {
     
   },
   beforeDestroy() {
+
   }
 };
 </script>

@@ -76,10 +76,11 @@ export default {
     },
     editItem(item) {
       console.log(item);
-      this.$store.commit(Constant.MODAL_OPEN, {
-        target: "user",
-        mode: "edit"
-      })
+      this.$store.dispatch(Constant.USER_DETAIL, { No : item.No })
+      // this.$store.commit(Constant.MODAL_OPEN, {
+      //   target: "user",
+      //   mode: "edit"
+      // })
     },
     deleteItem(item) {
       var no = item.No;

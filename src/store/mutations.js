@@ -10,6 +10,11 @@ export default {
     state.user.list = payload.list;
   },
 
+  //유저 상세
+  [Constant.USER_DETAIL]: (state, payload) => {
+    state.user.content = payload.detailData;
+  },
+
   [Constant.DEV_BOARD_LIST]: (state, payload) => {
     state.boardList = payload.list;
   },

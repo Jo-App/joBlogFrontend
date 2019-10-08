@@ -53,11 +53,21 @@ export default {
 
   //유저 등록
   [Constant.USER_SAVE](name, email, password) {
-    return axios.post(CONF.USER_SAVE, {
+    const res =  axios.post(CONF.USER_SAVE, {
       params: {
         name,
         email,
         password
+      }
+    })
+    console.log(res)
+  },
+
+  //유저 상세
+  [Constant.USER_DETAIL](No){
+    return axios.post(CONF.USER_DETAIL, {
+      params: {
+        No
       }
     })
   },

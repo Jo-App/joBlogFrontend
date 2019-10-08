@@ -40,6 +40,21 @@ export default {
       })
   },
 
+  //유저 상세
+  [Constant.USER_DETAIL]: (store, payload) => {
+    
+    var No = payload.No;
+    contactAPI.userDetail(No)
+    .then((response) => {
+      if(response.status == 200){
+        store.commit(Constant.USER_DETAIL, { detailData : response.data[0] });
+        store.commit(Constant.MODAL_OPEN, { target : "user", mode: "edit" })
+      } else {
+        alert("조회 실패");
+      }
+    })
+  },
+
   //유저 삭제
   [Constant.USER_DELETE]: (store, payload) => {
     var no = payload.no;

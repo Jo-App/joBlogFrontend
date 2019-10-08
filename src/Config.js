@@ -9,6 +9,7 @@ export default {
 
   USER_LIST: BASE_URL + "/userList", //유저 목록 조회
   USER_SAVE: BASE_URL + "/userSave", //유저 저장
+  USER_DETAIL : BASE_URL + "/userDetail", //유저 상세
   USER_UPDATE: BASE_URL + "/userUpdate", //유저 수정
   USER_DELTE: BASE_URL + "/userDelete", //유저 삭제
 }
