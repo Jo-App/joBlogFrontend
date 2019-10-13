@@ -15,7 +15,7 @@
           <v-col cols="12" sm="6" md="4">
             <v-text-field
               ref="name"
-              v-model="name"
+              v-model="user.content.Name"
               :rules="[rules.required]"
               label="Full Name*"
               placeholder
@@ -26,7 +26,7 @@
           <v-col cols="12">
             <v-text-field
               ref="email"
-              v-model="email"
+              v-model="user.content.Email"
               label="Email*"
               :rules="[rules.required, rules.email]"
               required
@@ -35,7 +35,7 @@
           <v-col cols="12">
             <v-text-field
               ref="password"
-              v-model="password"
+              v-model="user.content.Password"
               :append-icon="show ? 'visibility' : 'visibility_off'"
               :rules="[rules.required, rules.min]"
               :type="show ? 'text' : 'password'"
@@ -106,13 +106,13 @@ export default {
       this.$store.commit(Constant.MODAL_CLOSE, {
         target: "user"
       });
-      this.$store.state.user.content = {
-        No: '',
-        Email: '',
-        Password: '',
-        Name: '',
-        CreatedDate: '',
-      }
+      // this.$store.state.user.content = {
+      //   No: '',
+      //   Email: '',
+      //   Password: '',
+      //   Name: '',
+      //   CreatedDate: '',
+      // }
     },
     validationCheck() {
       this.formHasErrors = false;

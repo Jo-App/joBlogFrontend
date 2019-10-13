@@ -29,5 +29,9 @@ export default {
   [Constant.MODAL_CLOSE]: (state, payload) => {
     state[payload.target].modalView = false;
     state[payload.target].mode = '';
+    var keys = Object.keys(state[payload.target].content);
+    for (var i in keys) {
+      state[payload.target].content[keys[i]] = '';
+    }
   },
 }

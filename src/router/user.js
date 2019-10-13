@@ -8,6 +8,8 @@ import test2 from '../components/user/test2.vue';
 import test3 from '../components/user/test3.vue';
 import DevBoardList from '../components/user/DevBoardList.vue';
 
+import DevStoryList from '../components/user/DevStory/DevStoryList.vue';
+
 export default [{
     path: '/',
     redirect: '/index'
@@ -61,6 +63,15 @@ export default [{
     name: 'devBoardList',
     components: {
       content: DevBoardList,
+    },
+  },
+  {
+    path: '/devStoryList',
+    name: 'devStoryList',
+    components: {
+      header: Header,
+      content: DevStoryList,
+      footer: Footer
     },
   }
 ];
