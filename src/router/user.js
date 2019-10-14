@@ -8,7 +8,7 @@ import test2 from '../components/user/test2.vue';
 import test3 from '../components/user/test3.vue';
 import DevBoardList from '../components/user/DevBoardList.vue';
 
-import DevStoryList from '../components/user/DevStory/DevStoryList.vue';
+import DevStoryList from '../components/user/devStory/DevStoryList.vue';
 
 export default [{
     path: '/',
