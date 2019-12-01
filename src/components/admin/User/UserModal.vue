@@ -53,7 +53,12 @@
     <v-card-actions>
       <div class="flex-grow-1"></div>
       <v-btn color="blue darken-1" text @click="close()">Close</v-btn>
-      <v-btn color="blue darken-1" text @click="validationCheck()">Save</v-btn>
+      <template v-if="this.$store.state.user.mode == 'add'">
+        <v-btn color="blue darken-1" text @click="validationCheck()">Save</v-btn>
+      </template>
+      <template v-else-if="this.$store.state.user.mode == 'edit'">
+        <v-btn color="blue darken-1" text @click="validationCheck()">Update</v-btn>
+      </template>
     </v-card-actions>
   </v-card>
 </template>
@@ -117,7 +122,11 @@ export default {
       });
       //이메일 중복여부를 채크해주는 벨리데이션 추가해야됨
       if (!this.formHasErrors) {
-        this.save();
+        if(this.$store.state.user.mode == 'add'){
+          this.save();
+        } else if(this.$store.state.user.mode == 'edit'){
+          this.update();
+        }
       }
     },
     save() {
@@ -126,7 +135,14 @@ export default {
         email: this.user.content.Email,
         password: this.user.content.Password
       });
-    }
+    },
+    update() {
+      this.$store.dispatch(Constant.USER_UPDATE, {
+        name: this.user.content.Name,
+        email: this.user.content.Email,
+        password: this.user.content.Password
+      });
+    },
   }
 };
 </script>

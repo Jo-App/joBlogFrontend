@@ -5,25 +5,6 @@ import state from '../store/state.js';
 
 export default {
 
-  [Constant.LIST_CODE]: function (pageno, pagesize) {
-    return axios.get('/api/boardResult', {
-      params: {
-        pageno: pageno,
-        pagesize: pagesize
-      }
-    })
-  },
-
-  //async 처리 해줘야됨
-  [Constant.DEV_BOARD_LIST](pageno, pagesize) {
-    return axios.get(CONF.DEV_BOARD_LIST, {
-      params: {
-        pageno: pageno,
-        pagesize: pagesize
-      }
-    })
-  },
-
   //유저 목록
   async [Constant.USER_LIST](pageno, pagesize) {
     const res = await axios.get(CONF.USER_LIST, {
@@ -65,17 +46,24 @@ export default {
   },
 
   //유저 상세
-  [Constant.USER_DETAIL](No){
+  [Constant.USER_DETAIL](no){
     return axios.post(CONF.USER_DETAIL, {
       params: {
-        No
+        no
       }
     })
   },
 
   //유저 수정
-  [Constant.USER_UPDATE]() {
-
+  [Constant.USER_UPDATE](no, name, email, password) {
+    return axios.post(CONF.USER_UPDATE, {
+      params:{
+        no,
+        name,
+        email,
+        password
+      }
+    })
   },
 
   //유저 삭제

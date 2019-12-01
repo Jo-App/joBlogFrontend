@@ -5,15 +5,15 @@ export default {
     state.contactlist = payload.contactlist;
   },
 
-  userReset : (state, payload) => {
-    state.user.list.splice(0, state.user.list.length);
-  },
-
   //유저 목록
   [Constant.USER_LIST]: (state, payload) => {
     state.user.list = payload.list;
   },
-
+  
+  //유저목록 초기화
+  [Constant.USER_LIST_RESET] : (state, payload) => {
+    state.user.list.splice(0, state.user.list.length);
+  },
   //유저 상세
   [Constant.USER_DETAIL]: (state, payload) => {
     state.user.content = payload.detailData;

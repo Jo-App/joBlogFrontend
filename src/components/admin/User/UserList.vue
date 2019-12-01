@@ -19,7 +19,6 @@
             <v-btn class="mx-2" fab dark small color="indigo" @click="userAddModal()">
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
-            <button @click="reset()">reset</button>
           </v-toolbar>
         </template>
         <template v-slot:item.action="{ item }">
@@ -77,7 +76,7 @@ export default {
     },
     editItem(item) {
       console.log(item);
-      this.$store.dispatch(Constant.USER_DETAIL, { No : item.No })
+      this.$store.dispatch(Constant.USER_DETAIL, { no : item.No })
       // this.$store.commit(Constant.MODAL_OPEN, {
       //   target: "user",
       //   mode: "edit"
@@ -90,9 +89,6 @@ export default {
       } else {
         return false;
       }
-    },
-    reset(){
-      this.$store.dispatch(Constant.USER_LIST);
     }
   }
 };

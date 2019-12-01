@@ -4,6 +4,7 @@ export default {
 
 
   USER_LIST: "userList", //유저 목록
+  USER_LIST_RESET : "userListReset", //유저 목록 초기화
   USER_SAVE: "userSave", //유저 등록
   USER_DETAIL: "userDetail", //유저 상세
   USER_UPDATE: "userUpdate", //유저 수정
