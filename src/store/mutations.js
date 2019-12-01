@@ -5,6 +5,10 @@ export default {
     state.contactlist = payload.contactlist;
   },
 
+  userReset : (state, payload) => {
+    state.user.list.splice(0, state.user.list.length);
+  },
+
   //유저 목록
   [Constant.USER_LIST]: (state, payload) => {
     state.user.list = payload.list;

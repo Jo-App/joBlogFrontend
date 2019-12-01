@@ -8,7 +8,7 @@
         <span class="headline">유저 수정</span>
       </template>
     </v-card-title>
-    {{user.content}}
+    <!-- {{user.content}} -->
     <v-card-text>
       <v-container>
         <v-row>
@@ -79,8 +79,7 @@ export default {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return pattern.test(value) || "Invalid e-mail.";
         }
-      },
-
+      }
     };
   },
   // computed: {
@@ -92,27 +91,21 @@ export default {
   //     };
   //   },
   // },
-  computed:
-    _.extend(mapState(["user"])),
-    form() {
-      return {
-        name: this.name,
-        email: this.email,
-        password: this.password
-      };
+  computed: _.extend(
+    {
+      form() {
+        return {
+          name: this.user.content.Name,
+          email: this.user.content.Email,
+          password: this.user.content.Password
+        };
+      }
     },
+    mapState(["user"])
+  ),
   methods: {
     close() {
-      this.$store.commit(Constant.MODAL_CLOSE, {
-        target: "user"
-      });
-      // this.$store.state.user.content = {
-      //   No: '',
-      //   Email: '',
-      //   Password: '',
-      //   Name: '',
-      //   CreatedDate: '',
-      // }
+      this.$store.commit(Constant.MODAL_CLOSE, { target: "user" });
     },
     validationCheck() {
       this.formHasErrors = false;
@@ -129,15 +122,11 @@ export default {
     },
     save() {
       this.$store.dispatch(Constant.USER_SAVE, {
-        name: this.name,
-        email: this.email,
-        password: this.password
+        name: this.user.content.Name,
+        email: this.user.content.Email,
+        password: this.user.content.Password
       });
-    },
-    
-  },
-  beforeDestroy() {
-
+    }
   }
 };
 </script>

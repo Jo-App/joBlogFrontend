@@ -36,14 +36,16 @@ export default {
     var content = state.user.content; //아이템이 담길 변수
     var contents = state.user.contents; //목록을 쌓을 변수
     var keys = Object.keys(content);
-    result.map(data => {
-      for (var i in keys) {
-        content[keys[i]] = data[keys[i]];
-      }
-      contents.push({
-        ...content
+    if(result.length > 0) {
+      result.map(data => {
+        for (var i in keys) {
+          content[keys[i]] = data[keys[i]];
+        }
+        contents.push({
+          ...content
+        })
       })
-    })
+    }
     //state 초기화
     for (var i in keys) {
       content[keys[i]] = '';
@@ -53,14 +55,13 @@ export default {
 
   //유저 등록
   [Constant.USER_SAVE](name, email, password) {
-    const res =  axios.post(CONF.USER_SAVE, {
+    return axios.post(CONF.USER_SAVE, {
       params: {
         name,
         email,
         password
       }
     })
-    console.log(res)
   },
 
   //유저 상세

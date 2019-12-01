@@ -19,25 +19,23 @@ export default {
   },
 
   //유저 목록
-  [Constant.USER_LIST]: (store, payload) => {
-    contactAPI.userList(1, 10)
-      .then((response) => {
-        store.commit(Constant.USER_LIST, {
-          list: response
-        });
-      })
+  [Constant.USER_LIST]: async (store, payload) => {
+    await store.commit("userReset")
+    const response = await contactAPI.userList(1, 10);
+    await store.commit(Constant.USER_LIST, { list: response });
   },
 
   //유저 등록
-  [Constant.USER_SAVE]: (store, payload) => {
+  [Constant.USER_SAVE]: async (store, payload) => {
     var name = payload.name;
     var email = payload.email;
     var password = payload.password;
 
-    contactAPI.userSave(name, email, password)
-      .then((response) => {
-        console.log(response)
-      })
+    const response = await contactAPI.userSave(name, email, password);
+    if(response.data){
+      store.dispatch(Constant.USER_LIST);
+      store.commit(Constant.MODAL_CLOSE, { target: "user" });
+    }
   },
 
   //유저 상세
@@ -60,7 +58,11 @@ export default {
     var no = payload.no;
     contactAPI.userDelete(no)
       .then((response) => {
-        console.log(response)
+        if(response.data){
+          alert("삭제 완료");
+        } else {
+          alert("삭제 실패");
+        }
       })
   },
 

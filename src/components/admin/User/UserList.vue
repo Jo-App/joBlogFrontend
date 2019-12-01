@@ -19,6 +19,7 @@
             <v-btn class="mx-2" fab dark small color="indigo" @click="userAddModal()">
               <v-icon dark>mdi-plus</v-icon>
             </v-btn>
+            <button @click="reset()">reset</button>
           </v-toolbar>
         </template>
         <template v-slot:item.action="{ item }">
@@ -29,7 +30,7 @@
     </v-container>
 
     <v-dialog v-model="this.$store.state.user.modalView" persistent max-width="600px">
-      <UserModal></UserModal>
+      <UserModal v-if="this.$store.state.user.modalView"></UserModal>
     </v-dialog>
     
   </v-content>
@@ -84,7 +85,14 @@ export default {
     },
     deleteItem(item) {
       var no = item.No;
-      this.$store.dispatch(Constant.USER_DELETE, { no });
+      if (confirm( item.Name + " 계정을 삭제 하시겠습니까?") == true) {
+        this.$store.dispatch(Constant.USER_DELETE, { no });
+      } else {
+        return false;
+      }
+    },
+    reset(){
+      this.$store.dispatch(Constant.USER_LIST);
     }
   }
 };
