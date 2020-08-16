@@ -7,7 +7,25 @@ export default {
 
   //유저 목록
   [Constant.USER_LIST]: (state, payload) => {
-    state.user.list = payload.list;
+    let result = payload.response.data; //db에서 조회된 값 저장
+    let content = state.user.content; //아이템이 담길 변수
+    let contents = state.user.contents; //목록을 쌓을 변수
+    let keys = Object.keys(content);
+    if(result.length > 0) {
+      result.map(data => {
+        for (var i in keys) {
+          content[keys[i]] = data[keys[i]];
+        }
+        contents.push({
+          ...content
+        })
+      })
+    }
+    //state 초기화
+    for (var i in keys) {
+      content[keys[i]] = '';
+    }
+    state.user.list = contents;
   },
   
   //유저목록 초기화

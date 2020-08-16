@@ -1,29 +1,12 @@
-import contactAPI from '../api/ContactsAPI.js';
-import Constant from '../constant.js';
-import { async } from 'q';
+import contactAPI from "../api/ContactsAPI.js";
+import Constant from "../constant.js";
 
 export default {
-  [Constant.LIST_CODE]: (store, payload) => {
-    var pageno;
-    if (typeof payload === "undefined" || typeof payload.pageno === "undefined")
-      pageno = 1;
-    else
-      pageno = payload.pageno;
-    var pagesize = store.state.contactlist.pagesize;
-    contactAPI.listCode(pageno, pagesize)
-      .then((response) => {
-        console.log(response);
-        store.commit(Constant.LIST_CODE, {
-          contactlist: response
-        });
-      })
-  },
-
+  
   //유저 목록
   [Constant.USER_LIST]: async (store, payload) => {
-    await store.commit(Constant.USER_LIST_RESET);
     const response = await contactAPI.userList(1, 10);
-    await store.commit(Constant.USER_LIST, { list: response });
+    await store.commit(Constant.USER_LIST, { response });
   },
 
   //유저 등록
@@ -34,8 +17,11 @@ export default {
 
     const response = await contactAPI.userSave(name, email, password);
     if(response.data){
+      alert("유저 등록 완료");
       store.dispatch(Constant.USER_LIST);
       store.commit(Constant.MODAL_CLOSE, { target: "user" });
+    } else {
+      alert("유저 등록 실패");
     }
   },
 
@@ -55,7 +41,7 @@ export default {
 
   //유저 수정
   [Constant.USER_UPDATE]: async(store, payload) => {
-    var no = payload.No;
+    var no = payload.no;
     var name = payload.name;
     var email = payload.email;
     var password = payload.password; 

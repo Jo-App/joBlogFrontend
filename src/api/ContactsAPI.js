@@ -13,25 +13,7 @@ export default {
         pagesize: pagesize
       }
     })
-    var result = res.data; //db에서 조회된 값 저장
-    var content = state.user.content; //아이템이 담길 변수
-    var contents = state.user.contents; //목록을 쌓을 변수
-    var keys = Object.keys(content);
-    if(result.length > 0) {
-      result.map(data => {
-        for (var i in keys) {
-          content[keys[i]] = data[keys[i]];
-        }
-        contents.push({
-          ...content
-        })
-      })
-    }
-    //state 초기화
-    for (var i in keys) {
-      content[keys[i]] = '';
-    }
-    return contents;
+    return res;
   },
 
   //유저 등록

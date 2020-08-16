@@ -89,6 +89,9 @@ export default {
       } else {
         return false;
       }
+    },
+    beforeDestroy() {
+      this.$store.commit(Constant.USER_LIST_RESET);
     }
   }
 };

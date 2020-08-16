@@ -138,6 +138,7 @@ export default {
     },
     update() {
       this.$store.dispatch(Constant.USER_UPDATE, {
+        no: this.user.content.No,
         name: this.user.content.Name,
         email: this.user.content.Email,
         password: this.user.content.Password
