@@ -15,7 +15,7 @@
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vuejs-paginate": "^2.1.0",
-    "vuetify": "^2.0.7",
+    "vuetify": "^2.6.10",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
